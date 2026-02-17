@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Age Talent | Teacher Development for the AI Age</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --navy-primary: #1e3a5f;
+            --navy-dark: #0f2642;
+            --navy-light: #2c5282;
+            --blue-accent: #3b82f6;
+            --gray-dark: #374151;
+            --gray-medium: #6b7280;
+            --gray-light: #9ca3af;
+            --gray-bg: #f3f4f6;
+            --white: #ffffff;
+            --accent-silver: #e5e7eb;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--gray-dark);
+            background: var(--white);
+        }
+
+        /* Header & Navigation */
+        header {
+            background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy-primary) 100%);
+            color: var(--white);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--white);
+        }
+
+        .logo img {
+            height: 50px;
+            width: auto;
+        }
+
+        .logo-text {
+            background: linear-gradient(135deg, var(--blue-accent), var(--accent-silver));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--blue-accent);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--navy-primary) 0%, var(--navy-light) 50%, var(--blue-accent) 100%);
+            color: var(--white);
+            padding: 6rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="10" cy="10" r="1" fill="white" opacity="0.1"/><circle cx="50" cy="30" r="1" fill="white" opacity="0.1"/><circle cx="80" cy="20" r="1" fill="white" opacity="0.1"/><circle cx="30" cy="60" r="1" fill="white" opacity="0.1"/><circle cx="70" cy="80" r="1" fill="white" opacity="0.1"/></svg>') repeat;
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero .subtitle {
+            font-size: 1.5rem;
+            font-weight: 300;
+            margin-bottom: 1rem;
+            opacity: 0.95;
+        }
+
+        .hero .tagline {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--white);
+            color: var(--navy-primary);
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+            background: var(--gray-bg);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--navy-dark);
+        }
+
+        .section-header .accent {
+            background: linear-gradient(135deg, var(--navy-primary), var(--blue-accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-header p {
+            font-size: 1.2rem;
+            color: var(--gray-medium);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Value Proposition - "What's In It For Me?" */
+        .value-prop {
+            background: linear-gradient(135deg, var(--gray-bg) 0%, var(--white) 100%);
+        }
+
+        .value-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .value-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .value-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+        }
+
+        .value-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .value-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--navy-primary);
+        }
+
+        .value-card p {
+            color: var(--gray-medium);
+            line-height: 1.7;
+        }
+
+        /* Five Pillars */
+        .pillars-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .pillar {
+            background: var(--white);
+            padding: 2.5rem 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            border-top: 5px solid var(--navy-primary);
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pillar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--navy-primary), var(--blue-accent));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s;
+        }
+
+        .pillar:hover::before {
+            transform: scaleX(1);
+        }
+
+        .pillar:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+        }
+
+        .pillar-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .pillar h3 {
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            color: var(--navy-dark);
+        }
+
+        .pillar p {
+            color: var(--gray-medium);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .pillar-tag {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--navy-primary), var(--blue-accent));
+            color: var(--white);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        /* Alpha Model Integration */
+        .alpha-model {
+            background: var(--gray-bg);
+        }
+
+        .alpha-comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        .alpha-section {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        .alpha-section h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--navy-primary);
+        }
+
+        .alpha-list {
+            list-style: none;
+            margin-left: 0;
+        }
+
+        .alpha-list li {
+            padding: 0.75rem 0;
+            padding-left: 2rem;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .alpha-list li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--blue-accent);
+            font-weight: bold;
+        }
+
+        /* Summer Orientation */
+        .summer-program {
+            background: linear-gradient(135deg, var(--navy-primary) 0%, var(--navy-light) 50%, var(--blue-accent) 100%);
+            color: var(--white);
+        }
+
+        .summer-program .section-header h2,
+        .summer-program .section-header p {
+            color: var(--white);
+        }
+
+        .timeline {
+            max-width: 800px;
+            margin: 3rem auto 0;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: rgba(255,255,255,0.3);
+        }
+
+        .timeline-item {
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            position: relative;
+            width: calc(50% - 2rem);
+        }
+
+        .timeline-item:nth-child(odd) {
+            margin-left: auto;
+            margin-right: 0;
+        }
+
+        .timeline-item:nth-child(even) {
+            margin-right: auto;
+            margin-left: 0;
+        }
+
+        .timeline-item h4 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-item .week {
+            display: inline-block;
+            background: var(--accent-silver);
+            color: var(--navy-dark);
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+        }
+
+        /* Implementation */
+        .implementation-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .step {
+            background: linear-gradient(135deg, var(--gray-bg) 0%, var(--white) 100%);
+            padding: 2rem;
+            border-radius: 15px;
+            border-left: 5px solid var(--navy-primary);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        .step-number {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--navy-primary), var(--blue-accent));
+            color: var(--white);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 50px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .step h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--navy-dark);
+        }
+
+        .step p {
+            color: var(--gray-medium);
+            line-height: 1.7;
+        }
+
+        /* Call to Action Section */
+        .final-cta {
+            background: var(--navy-dark);
+            color: var(--white);
+            text-align: center;
+            padding: 5rem 2rem;
+        }
+
+        .final-cta h2 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .final-cta p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .final-cta .cta-button {
+            background: linear-gradient(135deg, var(--blue-accent), var(--navy-light));
+            color: var(--white);
+            margin: 0.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #0f0f0f;
+            color: var(--white);
+            padding: 3rem 2rem 2rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            font-size: 2rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--blue-accent), var(--accent-silver));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+
+        footer p {
+            opacity: 0.7;
+            margin-top: 1rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1.2rem;
+            }
+
+            .alpha-comparison {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline::before {
+                left: 0;
+            }
+
+            .timeline-item {
+                width: 100%;
+                margin-left: 0 !important;
+                margin-right: 0 !important;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        /* Highlight boxes */
+        .highlight-box {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-left: 5px solid var(--blue-accent);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 10px;
+        }
+
+        .highlight-box h4 {
+            color: var(--navy-primary);
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .highlight-box p {
+            color: var(--gray-medium);
+            line-height: 1.7;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="newagetalent-logo.svg" alt="New Age Talent Logo">
+                <span class="logo-text">NEW AGE TALENT</span>
+            </div>
+            <ul>
+                <li><a href="#value">Why Join</a></li>
+                <li><a href="#pillars">Five Pillars</a></li>
+                <li><a href="#summer">Summer Training</a></li>
+                <li><a href="#implementation">Get Started</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Teacher Development for the AI Age</h1>
+            <p class="subtitle">Where Human Teaching Meets Technological Transformation</p>
+            <p class="tagline">Equipping urban educators to thrive when AI handles content—and students need you more than ever</p>
+            <a href="#value" class="cta-button">Discover What's In It For You</a>
+        </div>
+    </section>
+
+    <!-- Value Proposition: "What's In It For Me?" -->
+    <section id="value" class="value-prop">
+        <div class="section-header">
+            <h2>Why Teachers Join <span class="accent">New Age Talent</span></h2>
+            <p>Because the paradigm is shifting—and you deserve to lead it, not survive it</p>
+        </div>
+
+        <div class="value-grid">
+            <div class="value-card">
+                <div class="value-icon">🎯</div>
+                <h3>Relevance That Lasts</h3>
+                <p>When AI delivers content in seconds, your value isn't in what you know—it's in <strong>how you develop humans</strong>. We train you to be irreplaceable in the AI age.</p>
+            </div>
+
+            <div class="value-card">
+                <div class="value-icon">⚡</div>
+                <h3>Less Burnout, More Impact</h3>
+                <p>Stop drowning in content delivery. Learn to <strong>use AI to maximize learning</strong> while you focus on coaching, mentoring, and building the skills students actually need.</p>
+            </div>
+
+            <div class="value-card">
+                <div class="value-icon">💼</div>
+                <h3>Career Future-Proofing</h3>
+                <p>Become the teacher schools fight to keep. Master the <strong>human skills AI can't replace</strong>: emotional intelligence, relationship-building, critical thinking, and career coaching.</p>
+            </div>
+
+            <div class="value-card">
+                <div class="value-icon">🚀</div>
+                <h3>Professional Growth</h3>
+                <p>Join an <strong>AI-focused cohort</strong> in your network. Be part of the teacher-leaders shaping education's next chapter—not reacting to it.</p>
+            </div>
+
+            <div class="value-card">
+                <div class="value-icon">🎓</div>
+                <h3>Student Success Redefined</h3>
+                <p>Prepare students for careers that don't exist yet. Learn to coach them toward <strong>new age talent structures</strong>—not outdated pathways.</p>
+            </div>
+
+            <div class="value-card">
+                <div class="value-icon">🧭</div>
+                <h3>Clarity in Chaos</h3>
+                <p>NYS still has 3-8 assessments and Regents. We get it. We don't replace the system—we help you <strong>integrate AI strategically</strong> while meeting requirements.</p>
+            </div>
+        </div>
+
+        <div class="highlight-box">
+            <h4>🔑 The Core Answer: "What's In It For Me?"</h4>
+            <p><strong>You become the teacher the AI age demands.</strong> Not obsolete. Not overwhelmed. Not doing the same thing while technology passes you by. You become the coach, the mentor, the skill-builder, the human connector that no algorithm can replace—and you gain the tools, community, and confidence to thrive in this transformation.</p>
+        </div>
+    </section>
+
+    <!-- Five Pillars Section -->
+    <section id="pillars">
+        <div class="section-header">
+            <h2>The Five Pillars of <span class="accent">New Age Teaching</span></h2>
+            <p>The foundation of human-centered education in the AI era</p>
+        </div>
+
+        <div class="pillars-grid">
+            <div class="pillar">
+                <div class="pillar-icon">🎯</div>
+                <h3>Streamlined Core Content</h3>
+                <p>Maximize AI for learning efficiency. Deliver standards-aligned content faster, smarter, and more personalized than ever—freeing your time for what matters.</p>
+                <div class="pillar-tag">AI-Enhanced Learning</div>
+            </div>
+
+            <div class="pillar">
+                <div class="pillar-icon">❤️</div>
+                <h3>Social-Emotional Learning</h3>
+                <p>Build emotional intelligence, self-awareness, and resilience. When AI handles knowledge, students need you to help them understand themselves and others.</p>
+                <div class="pillar-tag">Human Connection</div>
+            </div>
+
+            <div class="pillar">
+                <div class="pillar-icon">⚖️</div>
+                <h3>Restorative Practices</h3>
+                <p>Create belonging through relationships, not punishment. Teach conflict resolution, accountability, and community-building—the foundation of lifelong success.</p>
+                <div class="pillar-tag">Equity & Belonging</div>
+            </div>
+
+            <div class="pillar">
+                <div class="pillar-icon">🛠️</div>
+                <h3>Skill Development</h3>
+                <p>Critical thinking, collaboration, creativity, communication. These are the skills AI can't automate—and the ones that define career success in any field.</p>
+                <div class="pillar-tag">Future-Ready Skills</div>
+            </div>
+
+            <div class="pillar">
+                <div class="pillar-icon">🚀</div>
+                <h3>Career Coaching & New Age Pathways</h3>
+                <p>Guide students toward emerging careers and talent structures. You're not just teaching—you're shaping how students see their futures.</p>
+                <div class="pillar-tag">New Age Careers</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Alpha Model Integration -->
+    <section id="alpha" class="alpha-model">
+        <div class="section-header">
+            <h2>Learning from the <span class="accent">Alpha Model</span></h2>
+            <p>Adapting breakthrough concepts to your reality: NYS standards, 3-8 assessments, and Regents</p>
+        </div>
+
+        <div class="alpha-comparison">
+            <div class="alpha-section">
+                <h3>📚 Alpha Model Inspiration</h3>
+                <ul class="alpha-list">
+                    <li><strong>2-hour daily learning:</strong> Focused, intensive content mastery</li>
+                    <li><strong>AI-first delivery:</strong> Personalized, adaptive, data-driven</li>
+                    <li><strong>Skill-focused rest of day:</strong> Hands-on application, real-world projects</li>
+                    <li><strong>Teacher as coach:</strong> Not lecturer—facilitator of growth</li>
+                    <li><strong>Student agency:</strong> Ownership over pace and path</li>
+                </ul>
+            </div>
+
+            <div class="alpha-section">
+                <h3>🎓 Our Adaptation for NYC Reality</h3>
+                <ul class="alpha-list">
+                    <li><strong>Can't limit to 2 hours:</strong> NYS mandates longer instructional time</li>
+                    <li><strong>Strategic AI integration:</strong> Use AI to streamline, not replace, required content</li>
+                    <li><strong>Five Pillar balance:</strong> Content + SEL + Skills + Restorative + Career</li>
+                    <li><strong>Teacher mindset shift:</strong> From content deliverer to human developer</li>
+                    <li><strong>Test prep meets future prep:</strong> Pass assessments AND build real skills</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="highlight-box" style="margin-top: 3rem;">
+            <h4>💡 The Core Philosophy We Keep</h4>
+            <p>The Alpha Model proves that <strong>learning can be dramatically more efficient with AI</strong>—and that liberates teachers to do what humans do best. We're not copying their structure. We're adopting their mindset: deliberate AI use, human-centered teaching, and preparing students for a radically different future.</p>
+        </div>
+    </section>
+
+    <!-- Summer Orientation Program -->
+    <section id="summer" class="summer-program">
+        <div class="section-header">
+            <h2>Summer Orientation: Your Mindset Shift Journey</h2>
+            <p>Not overwhelming. Not exhaustive. Just impactful enough to change how you teach forever.</p>
+        </div>
+
+        <div class="timeline">
+            <div class="timeline-item">
+                <span class="week">Week 1</span>
+                <h4>The AI Age Reality Check</h4>
+                <p>What's changing, what's not, and why your role is more valuable than ever. Face the paradigm shift together—with honesty and hope.</p>
+            </div>
+
+            <div class="timeline-item">
+                <span class="week">Week 2</span>
+                <h4>AI Tools for Learning</h4>
+                <p>Hands-on training with AI platforms. How to use technology to maximize student learning, motivation, and personalization—without losing your humanity.</p>
+            </div>
+
+            <div class="timeline-item">
+                <span class="week">Week 3</span>
+                <h4>The Five Pillars Framework</h4>
+                <p>Deep dive into each pillar. What they mean. Why they matter. How to integrate them into your classroom starting Day 1.</p>
+            </div>
+
+            <div class="timeline-item">
+                <span class="week">Week 4</span>
+                <h4>Skill Development & Career Coaching</h4>
+                <p>Learn to teach critical thinking, collaboration, and communication. Practice coaching students toward new age careers—not outdated pathways.</p>
+            </div>
+
+            <div class="timeline-item">
+                <span class="week">Week 5</span>
+                <h4>Restorative Practices & SEL</h4>
+                <p>Build your toolkit for emotional intelligence, conflict resolution, and relationship-centered discipline. Your most powerful teaching tools.</p>
+            </div>
+
+            <div class="timeline-item">
+                <span class="week">Week 6</span>
+                <h4>Plan Your First Month</h4>
+                <p>Design your classroom implementation plan. Leave with concrete lesson plans, AI integrations, and a support network.</p>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 3rem;">
+            <a href="#implementation" class="cta-button">Join the AI Focus Group</a>
+        </div>
+    </section>
+
+    <!-- Implementation Section -->
+    <section id="implementation">
+        <div class="section-header">
+            <h2>Getting <span class="accent">Started</span></h2>
+            <p>Building the AI-focused teacher cohort in your network</p>
+        </div>
+
+        <div class="implementation-steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <h3>Form the Focus Group</h3>
+                <p>Identify 8-15 teachers in your network ready to lead the shift. Early adopters. Curious minds. Teachers tired of the status quo.</p>
+            </div>
+
+            <div class="step">
+                <div class="step-number">2</div>
+                <h3>Summer Orientation</h3>
+                <p>6-week intensive training. Not overwhelming—impactful. Build skills, mindset, and community before the school year starts.</p>
+            </div>
+
+            <div class="step">
+                <div class="step-number">3</div>
+                <h3>Year-Long Support</h3>
+                <p>Monthly cohort meetings. Ongoing AI tool training. Lesson plan sharing. Problem-solving together. You're not alone in this.</p>
+            </div>
+
+            <div class="step">
+                <div class="step-number">4</div>
+                <h3>Measure What Matters</h3>
+                <p>Track student engagement, skill development, and career readiness—not just test scores. Prove the model works.</p>
+            </div>
+
+            <div class="step">
+                <div class="step-number">5</div>
+                <h3>Scale the Movement</h3>
+                <p>Year 2: Train more teachers. Share successes. Build the evidence base. Transform your network—then your district.</p>
+            </div>
+        </div>
+
+        <div class="highlight-box" style="margin-top: 3rem;">
+            <h4>🎯 Our Commitment to You</h4>
+            <p>We're not selling a pre-packaged program. We're building this WITH you. Your feedback shapes the training. Your struggles inform the solutions. Your wins become our proof points. This is co-creation—not top-down mandates.</p>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta">
+        <h2>The Future of Teaching Starts Now</h2>
+        <p>Join the teachers who won't be replaced by AI—they'll be empowered by it.</p>
+        <a href="/cdn-cgi/l/email-protection#21484f474e614f445640464455404d444f550f4e5346" class="cta-button">Start the Conversation</a>
+        <a href="#" class="cta-button">Download the Framework</a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">NEW AGE TALENT</div>
+            <p>Teacher Development for the AI Age</p>
+            <p style="margin-top: 2rem; font-size: 0.9rem;">
+                Building the human infrastructure for AI-age education<br>
+                <a href="http://www.newagetalent.org" style="color: var(--blue-accent); text-decoration: none;">www.newagetalent.org</a>
+            </p>
+            <p style="margin-top: 1rem; opacity: 0.5; font-size: 0.85rem;">
+                &copy; 2026 New Age Talent. All rights reserved.
+            </p>
